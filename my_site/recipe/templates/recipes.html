@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tem</title>
+</head>
+<body>
+<div class="container mt-5">
+
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>add rescipe</h2>
+        
+        <div class="mb-3">
+            <label  class="form-label">RESCIPE NAME</label>
+            <input type="text" name="resi_name" required class="form-control" >
+           
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">process</label><br>
+            <textarea  name ="res_discription" required class=" form-control" id="" cols="50" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">rescipe image</label><br>
+            <input   name = "res_image" type="file" class="form-label"  >
+        </div>
+        
+        <button type="submit" class="btn btn-primary">add recipe</button>
+    </form>
+    <hr>
+    <div  class="mt-5">
+      <div class="mx-auto col-6">
+        <form >
+
+          <div class="mb-3">
+            <label  class="form-label">search</label>
+            <input type="text" name="search" class="form-control" >
+          </div>
+          <button type="submit" class="btn btn-primary">search</button>
+        </form>
+      </div>
+    </div>
+
+ 
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">res_name</th>
+            <th scope="col">res_discription</th>
+            <th scope="col">res_image</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for res in recipes %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{res.res_name}}</td>
+            <td>{{res.res_description}}</td>
+            <td>
+              <img src="/media/{{res.res_image}}" style="height: 50px;">
+            </td>
+            <td><a href="/delete_recipe/{{res.id}}/" class ="btn btn-danger" >delete</a></td>
+            <td><a href="/update_recipe/{{res.id}}/" class ="btn btn-success" >update</a></td>
+          </tr>
+          {%endfor%}
+          
+        </tbody>
+      </table>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tem</title>
+</head>
+<body>
+<div class="container mt-5">
+
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+       
+        <h2>update recipe</h2>
+        
+        <div class="mb-3">
+            <label  class="form-label">RESCIPE NAME</label>
+            <input type="text" name="resi_name" value="{{recipe.res_name}}" class="form-control" >
+           
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">process</label><br>
+            <textarea  name ="res_discription" required class=" form-control" value="{{recipe.res_description}}" id="" cols="50" rows="3">{{recipe.res_description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">rescipe image</label><br>
+            <input   name = "res_image" type="file" class="form-label" value="{{recipe.res_image}}"  >
+        </div>
+        
+        <button type="submit" class="btn btn-primary">add recipe</button>
+    </form>
+
+
+
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</body>
+</html>
